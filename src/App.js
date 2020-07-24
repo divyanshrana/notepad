@@ -5,14 +5,19 @@ import Field from "./componants/field.jsx";
 
 let index = 4;
 class App extends React.Component {
-  state = {
-    todos: [
-      { text: "wash", id: 1, status: "active" },
-      { text: "shop", id: 2, status: "complete" },
-      { text: "steal", id: 3, status: "active" },
-    ],
-    filter: "All",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [
+        { text: "wash", id: 1, status: "active" },
+        { text: "shop", id: 2, status: "complete" },
+        { text: "steal", id: 3, status: "active" },
+      ],
+      filter: "All",
+      colors: ["red", "blue", "green"],
+    };
+  }
+
   addToList = (value) => {
     this.setState({
       todos: [
@@ -51,18 +56,19 @@ class App extends React.Component {
       }
     }
   };
+
   render() {
     return (
       <div className="App">
         <div className="todo">
-          <h1>TODO</h1>
-          <Input enter={this.addToList} />
-          <Field data={this.getTodos()} change={this.changeStatus} />
+          <h1 className="title">TODO#{this.props.title}</h1>
           <div className="buttons">
             <button onClick={this.applyFilter("all")}>All</button>
-            <button onClick={this.applyFilter("active")}>Active</button>
+            <button onClick={this.applyFilter("active")}>Todo/Active</button>
             <button onClick={this.applyFilter("complete")}>Completed</button>
           </div>
+          <Input enter={this.addToList} />
+          <Field data={this.getTodos()} change={this.changeStatus} />
         </div>
       </div>
     );

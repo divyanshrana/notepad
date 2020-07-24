@@ -3,4 +3,9 @@ li:hover {
 }
 li {
   padding: 5px;
+  margin-left: 7px;
+}
+li:hover {
+  transform: scale(1.04);
+  font-weight: bold;
 }

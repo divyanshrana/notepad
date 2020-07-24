@@ -8,14 +8,21 @@ class Input extends React.Component {
   handleClick = (e) => {
     if (e.key === "Enter") {
       const value = e.target.value;
-      if (value.trim !== "") {
+      if (value.trim()) {
         this.props.enter(value);
         e.target.value = "";
       }
     }
   };
   render() {
-    return <input className="input" onKeyDown={this.handleClick} />;
+    return (
+      <input
+        type="text"
+        placeHolder="   Enter your todos here"
+        className="input"
+        onKeyDown={this.handleClick}
+      />
+    );
   }
 }
 

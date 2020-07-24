@@ -58,9 +58,11 @@ class App extends React.Component {
           <h1>TODO</h1>
           <Input enter={this.addToList} />
           <Field data={this.getTodos()} change={this.changeStatus} />
-          <button onClick={this.applyFilter("all")}>All</button>
-          <button onClick={this.applyFilter("active")}>Active</button>
-          <button onClick={this.applyFilter("complete")}>Completed</button>
+          <div className="buttons">
+            <button onClick={this.applyFilter("all")}>All</button>
+            <button onClick={this.applyFilter("active")}>Active</button>
+            <button onClick={this.applyFilter("complete")}>Completed</button>
+          </div>
         </div>
       </div>
     );

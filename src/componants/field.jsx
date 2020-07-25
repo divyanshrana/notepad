@@ -1,9 +1,19 @@
 import React from "react";
 import "./field.css";
+import logo from "./check.png";
 
 export default class Field extends React.Component {
   constructor(props) {
-    super();
+    super(props);
+    this.state = {
+      getImage: (status) => {
+        if (status === "complete") {
+          return (
+            <img className="tick" height="15px" src={logo} alt="check"></img>
+          );
+        }
+      },
+    };
   }
 
   render() {
@@ -19,6 +29,7 @@ export default class Field extends React.Component {
             onClick={this.props.change(todo.id)}
           >
             {todo.text}
+            {this.state.getImage(todo.status)}
           </li>
         ))}
       </div>

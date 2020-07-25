@@ -8,9 +8,9 @@
   justify-content: center;
 }
 .todo {
-  background-color: #e8c869;
+  background-color: #f9d56e;
   display: inline-block;
-  margin-left: 25px;
+  margin-left: 2px;
   padding: 20px;
   border-radius: 5px;
   min-width: 300px;
@@ -39,6 +39,7 @@
   border: none;
   background-color: gray;
   outline: none;
+  color: white;
 }
 .buttons button:focus {
   background-color: black;
@@ -47,6 +48,39 @@
   margin-left: 5px;
   margin-right: 5px;
   transform: scale(1.1);
+}
+.titleInput {
+  background-color: #f9d56e;
+  text-align: center;
+  font-size: 26px;
+  max-width: 90%;
+  margin-bottom: 5px;
+  padding: 4px 0;
+  transition: 0.3s;
+  border: 0;
+  outline: none;
+  text-transform: uppercase;
+}
+.titleInput:focus {
+  transform: scale(1.1);
+  transition: 0.4s;
+  border: 0;
+}
+div > span {
+  display: inline-block;
+  bottom: 0;
+  left: 50%;
+  width: 20%;
+  height: 2px;
+}
+.focus-border {
+  width: 60%;
+}
+.titleInput:focus ~ span {
+  border-bottom: 1px solid #e8505b;
+  width: 100%;
+  transition: 0.2s;
+  left: 0;
 }
 .App-logo {
   height: 40vmin;

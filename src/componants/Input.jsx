@@ -19,7 +19,7 @@ class Input extends React.Component {
       <input
         type="text"
         placeHolder="   Enter your todos here"
-        className="input"
+        className="input1"
         onKeyDown={this.handleClick}
       />
     );

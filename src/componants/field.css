@@ -9,3 +9,8 @@ li:hover {
   transform: scale(1.04);
   font-weight: bold;
 }
+.tick {
+  margin-left: 8px;
+  position: relative;
+  top: 3px;
+}

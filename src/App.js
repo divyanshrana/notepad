@@ -61,7 +61,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="todo">
-          <h1 className="title">TODO#{this.props.title}</h1>
+          <div className="title">
+            <input
+              type="text"
+              className="titleInput"
+              placeholder={"Enter Title " + this.props.title}
+            ></input>
+            <span className="focus-border"></span>
+          </div>
           <div className="buttons">
             <button onClick={this.applyFilter("all")}>All</button>
             <button onClick={this.applyFilter("active")}>Todo/Active</button>

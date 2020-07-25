@@ -2,8 +2,13 @@ import React from "react";
 import "./App.css";
 import Input from "./componants/Input.jsx";
 import Field from "./componants/field.jsx";
+import { fadeIn } from "react-animations";
+import styled, { keyframes } from "styled-components";
 
 let index = 4;
+const FadeIn = styled.div`
+  animation: 1.2s ${keyframes`${fadeIn}`};
+`;
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -59,25 +64,27 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="todo">
-          <div className="title">
-            <input
-              type="text"
-              className="titleInput"
-              placeholder={"Enter Title " + this.props.title}
-            ></input>
-            <span className="focus-border"></span>
+      <FadeIn>
+        <div className="App">
+          <div className="todo">
+            <div className="title">
+              <input
+                type="text"
+                className="titleInput"
+                placeholder={"Enter Title " + this.props.title}
+              ></input>
+              <span className="focus-border"></span>
+            </div>
+            <div className="buttons">
+              <button onClick={this.applyFilter("all")}>All</button>
+              <button onClick={this.applyFilter("active")}>Todo/Active</button>
+              <button onClick={this.applyFilter("complete")}>Completed</button>
+            </div>
+            <Input enter={this.addToList} />
+            <Field data={this.getTodos()} change={this.changeStatus} />
           </div>
-          <div className="buttons">
-            <button onClick={this.applyFilter("all")}>All</button>
-            <button onClick={this.applyFilter("active")}>Todo/Active</button>
-            <button onClick={this.applyFilter("complete")}>Completed</button>
-          </div>
-          <Input enter={this.addToList} />
-          <Field data={this.getTodos()} change={this.changeStatus} />
         </div>
-      </div>
+      </FadeIn>
     );
   }
 }

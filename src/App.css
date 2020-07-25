@@ -6,16 +6,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 410px;
 }
 .todo {
   background-color: #f9d56e;
   display: inline-block;
-  margin-left: 2px;
+  margin-top: 20px;
+  margin-left: 20px;
   padding: 20px;
   border-radius: 5px;
   min-width: 300px;
-  min-height: 300px;
-  max-height: 400px;
+  min-height: 250px;
+  max-height: 350px;
   max-width: 500px;
   word-wrap: break-word;
   overflow-y: scroll;
@@ -62,7 +64,7 @@
   text-transform: uppercase;
 }
 .titleInput:focus {
-  transform: scale(1.1);
+  transform: scale(1.03);
   transition: 0.4s;
   border: 0;
 }

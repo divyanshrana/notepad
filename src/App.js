@@ -19,7 +19,7 @@ class App extends React.Component {
         { text: "steal", id: 3, status: "active" },
       ],
       filter: "All",
-      colors: ["red", "blue", "green"],
+      search: "",
     };
   }
 
@@ -45,21 +45,30 @@ class App extends React.Component {
   };
   applyFilter = (filter) => (ev) => {
     this.setState({
-      filter: filter,
+      filter,
     });
   };
-  getTodos = () => {
-    switch (this.state.filter) {
+  searchTodos = (todos, search) => {
+    return todos.filter((todo) => todo.text.indexOf(search) !== -1);
+  };
+  filterTodos = (todos, filter) => {
+    switch (filter) {
       case "active": {
-        return this.state.todos.filter((todo) => todo.status === "active");
+        return todos.filter((todo) => todo.status === "active");
       }
       case "complete": {
-        return this.state.todos.filter((todo) => todo.status === "complete");
+        return todos.filter((todo) => todo.status === "complete");
       }
       default: {
-        return this.state.todos;
+        return todos;
       }
     }
+  };
+  getTodos = () => {
+    return this.searchTodos(
+      this.filterTodos(this.state.todos, this.state.filter),
+      this.state.search
+    );
   };
 
   render() {
@@ -67,6 +76,12 @@ class App extends React.Component {
       <FadeIn>
         <div className="App">
           <div className="todo">
+            <div
+              className="cross"
+              onClick={() => this.props.del(this.props.title)}
+            >
+              X
+            </div>
             <div className="title">
               <input
                 type="text"
@@ -76,12 +91,25 @@ class App extends React.Component {
               <span className="focus-border"></span>
             </div>
             <div className="buttons">
-              <button onClick={this.applyFilter("all")}>All</button>
-              <button onClick={this.applyFilter("active")}>Todo/Active</button>
+              <button className="all" onClick={this.applyFilter("all")}>
+                All
+              </button>
+              <button className="active" onClick={this.applyFilter("active")}>
+                Todo/Active
+              </button>
               <button onClick={this.applyFilter("complete")}>Completed</button>
+              <input
+                type="text"
+                placeholder="search"
+                className="search"
+                value={this.state.search}
+                onChange={(e) => {
+                  this.setState({ search: e.target.value });
+                }}
+              ></input>
             </div>
             <Input enter={this.addToList} />
-            <Field data={this.getTodos()} change={this.changeStatus} />
+            <Field todos={this.getTodos()} change={this.changeStatus} />
           </div>
         </div>
       </FadeIn>

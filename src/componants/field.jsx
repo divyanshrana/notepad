@@ -19,7 +19,7 @@ export default class Field extends React.Component {
   render() {
     return (
       <div className="todos">
-        {this.props.data.map((todo) => (
+        {this.props.todos.map((todo) => (
           <li
             style={{
               textDecoration:
